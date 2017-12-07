@@ -380,21 +380,21 @@ input_data = [0, 1, 1, 1, 0,
               0, 1, 0, 0, 0,
               0, 1, 0, 0, 0,
               0, 1, 0, 0, 0]
-
-print("Input data: ")
-composite_list = [input_data[x:x+5] for x in range(0, len(input_data), 5)]
-for elem in composite_list:
-    print(str(elem)[1:-1])
-pre_output = clf.predict(reshape(input_data, (1, -1)))
-print("Weights")
-print(pre_output)
-output = [int(round(pre_output[0][0])), int(round(pre_output[0][1]))]
-print("Output: ")
-try:
-    print(dictionary[str(output)])
-except:
-    print("Could not define number precisely, but it looks like a " + str(output[1]))
-if output[0] >= 1:
-    print("Number is uneven")
-else:
-    print("Number is even")
+if __name__ == "__main__":
+    print("Input data: ")
+    composite_list = [input_data[x:x+5] for x in range(0, len(input_data), 5)]
+    for elem in composite_list:
+        print(str(elem)[1:-1])
+    pre_output = clf.predict(reshape(input_data, (1, -1)))
+    print("Weights")
+    print(pre_output)
+    output = [int(round(pre_output[0][0])), int(round(pre_output[0][1]))]
+    print("Output: ")
+    try:
+        print(dictionary[str(output)])
+    except KeyError:
+        print("Could not define number precisely, but it looks like a " + str(output[1]))
+    if output[0] >= 1:
+        print("Number is uneven")
+    else:
+        print("Number is even")
